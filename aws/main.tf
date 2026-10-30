@@ -57,7 +57,8 @@ resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.site.id
   key          = "index.html"
   content_type = "text/html"
-  acl          = "public-read"
+  # NOTE: no `acl` here -- BucketOwnerEnforced forbids object ACLs. Public
+  # access is granted by the bucket policy (public_read) instead -- modern AWS way.
   content = templatefile("${path.module}/../index.html.tpl", {
     title      = var.site_title
     host_label = "AWS S3 (cloud, ${var.region})"
