@@ -1,0 +1,11 @@
+# Never commit Terraform's private memories or any cloud credentials.
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+.alert
+# generated output (rendered page lives in each stack, or in S3)
+index.html
